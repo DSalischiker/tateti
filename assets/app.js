@@ -153,7 +153,7 @@ function cargarTableroLogico(id) {
 }
 
 function chequearGano() {
-    if (turno === true) {
+    if (turno) {
         chequeo = "x";
     } else {
         chequeo = "o";
