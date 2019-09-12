@@ -10,7 +10,6 @@ var array = [
     ["v", "v", "v"],
 ];
 
-
 //FUNCIÓN CUANDO SE HACE UN MOVIMIENTO
 function movimiento(id) {
     movimientos += 1;
@@ -193,7 +192,7 @@ function cambiarTurno() {
     turno = !turno;
 }
 
-function reinicioTotal () {
+function reinicioTotal() {
 
     jugadorX = 0;
     jugadorO = 0;
@@ -201,6 +200,6 @@ function reinicioTotal () {
     document.getElementById("partidasX").innerText = jugadorX;
     document.getElementById("partidasO").innerText = jugadorO;
 
-    reiniciar ();
+    reiniciar();
 
 }
