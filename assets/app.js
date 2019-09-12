@@ -4,7 +4,7 @@ let movimientos = 0;
 let chequeo;
 let jugadorX = 0;
 let jugadorO = 0;
-var array = [
+var array = [//matriz bidimensional
     ["v", "v", "v"],
     ["v", "v", "v"],
     ["v", "v", "v"],
@@ -202,5 +202,7 @@ function reinicioTotal () {
     document.getElementById("partidasO").innerText = jugadorO;
 
     reiniciar ();
-
 }
+
+
+
