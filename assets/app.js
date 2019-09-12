@@ -10,7 +10,6 @@ var array = [//matriz bidimensional
     ["v", "v", "v"],
 ];
 
-
 //FUNCIÓN CUANDO SE HACE UN MOVIMIENTO
 function movimiento(id) {
     movimientos += 1;
@@ -154,7 +153,7 @@ function cargarTableroLogico(id) {
 }
 
 function chequearGano() {
-    if (turno === true) {
+    if (turno) {
         chequeo = "x";
     } else {
         chequeo = "o";
@@ -193,7 +192,7 @@ function cambiarTurno() {
     turno = !turno;
 }
 
-function reinicioTotal () {
+function reinicioTotal() {
 
     jugadorX = 0;
     jugadorO = 0;
@@ -203,6 +202,3 @@ function reinicioTotal () {
 
     reiniciar ();
 }
-
-
-
