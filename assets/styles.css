@@ -11,7 +11,7 @@ h1 {
     margin-bottom: 1em;
 }
 
-#contenedor {
+#container {
     margin: 0 auto;
     width: 80%;
     display: flex;
@@ -28,19 +28,19 @@ h1 {
 
 }
 
-#partidasX {
+#gamesX {
     text-align: center;
     color: #1D70BD;
     font-size: 1.3em;
 }
 
-#partidasO {
+#gamesO {
     text-align: center;
     color: #BD1D1E;
     font-size: 1.3em;
 }
 
-#tablero {
+#board {
     max-width: 500px;
     max-height: 500px;
     width: 50%;
@@ -56,7 +56,7 @@ h1 {
     align-items: center;
 }
 
-#tablero div {
+#board div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,32 +67,32 @@ h1 {
 }
 
 
-#tablero div.turno1:hover {
+#board div.turn1:hover {
     background-color: rgb(52, 138, 219);
     transition: all 0.5s ease-out;
 }
 
-#tablero div.turno2:hover {
+#board div.turn2:hover {
     background-color: rgb(233, 64, 64);
     transition: all 0.5s ease-out;
 }
 
-#tablero div.azul {
+#board div.blue {
     background-color: #1D70BD;
 
 }
 
-#tablero div.rojo {
+#board div.red {
     background-color: #BD1D1E;
 
 }
 
-#tablero div.azul:hover {
+#board div.blue:hover {
     background-color: #1D70BD;
     cursor: not-allowed;
 }
 
-#tablero div.rojo:hover {
+#board div.red:hover {
     background-color: #BD1D1E;
     cursor: not-allowed;
 }
@@ -108,7 +108,7 @@ div img {
     width: 44%;
     height: 557px;
     padding-bottom: 2em;
-    background-color: rgb(79, 21, 146,0.8);
+    background-color: rgb(79, 21, 146, 0.8);
     border-radius: 1em;
     color: white;
     position: absolute;
@@ -117,21 +117,27 @@ div img {
 }
 
 @-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-#winDiv h1{
-        font-size: 3em;
-        position: absolute;
-        top: 26%;
+#winDiv h1 {
+    font-size: 3em;
+    position: absolute;
+    top: 26%;
 }
-#winDiv p{
+
+#winDiv p {
     padding: 19%;
     text-align: center;
 }
 
-#winDiv span{
+#winDiv span {
     background-color: white;
     color: rgb(79, 21, 146);
     border-radius: 1em;
@@ -147,12 +153,12 @@ div img {
 }
 
 /* CLASES */
-.desaparecer {
+.dissapear {
 
     display: none;
 }
 
-.aparecer {
+.appear {
 
     display: flex;
     justify-content: center;
@@ -172,28 +178,28 @@ img {
     height: 98%;
 }
 
-#reinicioDivs {
+#restartDivs {
 
     width: 40%;
     display: flex;
     margin: 0 auto;
 }
 
-.botonesReinicio {
+.restartButtons {
     width: fit-content;
     padding: 1em;
     margin: 0 auto;
 
 }
 
-.botonesReinicio:hover {
+.restartButtons:hover {
     background-color: rgb(219, 219, 219);
     color: rgb(99, 99, 99);
     transition: 0.5s ease-in-out;
     cursor: pointer;
 }
 
-.botonesReinicio:active {
+.restartButtons:active {
     background-color: rgb(51, 51, 51);
     color: white;
     transition: none;
