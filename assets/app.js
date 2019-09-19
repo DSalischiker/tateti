@@ -9,6 +9,13 @@ var array = [ //matriz bidimensional
     ["v", "v", "v"],
     ["v", "v", "v"],
 ];
+// VARs for localStorage;
+let savedTurn;
+let savedMoves;
+let savedCheck;
+let savedX;
+let savedO;
+let savedArray;
 
 //FUNCIÓN CUANDO SE HACE UN MOVIMIENTO
 function move(id) {
@@ -203,6 +210,18 @@ function totalRestart() {
     restart();
 }
 
+// functions to save data with localStorage;
+
+function saveData () {
+
+    savedTurn = localStorage.setItem (turn);
+    savedMoves = localStorage.setItem ();
+    savedCheck = localStorage.setItem ();
+    savedX = localStorage.setItem ();
+    savedO = localStorage.setItem ();
+    savedArray = localStorage.setItem ();
+
+}
 
 
 /*document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1> <iframe src="https://giphy.com/embed/xThtajsa65bqiQP32g" width="480" height="391" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="reiniciar()">Empezar nueva partida</span>'EMPATE CON EL GIF*/
