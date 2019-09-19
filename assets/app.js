@@ -1,43 +1,63 @@
-//FLAG --> Turno jugador: 1(x) || 2(o)
+//FLAG --> Turn player: 1(x) || 2(o)
 let turn = true;
 let moves = 0;
 let check;
 let playerX = 0;
 let playerO = 0;
-var array = [ //matriz bidimensional
+var array = [ //bidimensional matrix
     ["v", "v", "v"],
     ["v", "v", "v"],
     ["v", "v", "v"],
 ];
-// VARs for localStorage;
-let savedTurn;
-let savedMoves;
-let savedCheck;
-let savedX;
-let savedO;
-let savedArray;
+myStorage = window.localStorage;
+if (typeof myStorage !== 'undefined') {
+    if (myStorage.getItem('Turn') === null) {
 
-//FUNCIÓN CUANDO SE HACE UN MOVIMIENTO
+    } else {
+        turn = JSON.parse(myStorage.getItem('Turn'));
+        console.log("turn: " + turn);
+        moves = JSON.parse(myStorage.getItem('Moves'));
+        console.log("moves: " + moves);
+        playerX = JSON.parse(myStorage.getItem('GamesX'));
+        console.log("gamesX: " + playerX);
+        playerO = JSON.parse(myStorage.getItem('GamesO'));
+        console.log("gamesO: " + playerO);
+        array = JSON.parse(myStorage.getItem('Board'));
+        console.log("array: " + array);
+        //Update visual board according to logical board from localStorage
+        loadVisualBoardFromStorage(array);
+        document.getElementById("gamesX").innerText = playerX;
+        document.getElementById("gamesO").innerText = playerO;
+    }
+} else {
+    // localStorage not defined
+}
+
+//FUNCTION FOR A GAME MOVE
 function move(id) {
     moves += 1;
-    //Si el casillero clickeado está vacío
+    //If the space clicked is empty
     if (array[id[0]][id[1]] === "v") {
-        //Actualizo tablero "lógico"
+        //Update "logical" board
         loadLogicalBoard(id);
-        //Actualizo tablero visual según tablero lógico
+        //Update visual board according to logical board
         loadVisualBoard(id);
-        //Ganó el jugador?
+        //Did the player win?
         checkWin();
-        //Cambiá de turno
+        //Change turns
         changeTurn();
-        //deshabilita el casillero seleccionado
+        //Disable the space clicked
         disableDiv(id);
     }
-
+    myStorage.setItem('Turn', JSON.stringify(turn));
+    myStorage.setItem('Moves', JSON.stringify(moves));
+    myStorage.setItem('GamesX', JSON.stringify(playerX));
+    myStorage.setItem('GamesO', JSON.stringify(playerO));
+    myStorage.setItem('Board', JSON.stringify(array));
 }
 
 function hover(id) {
-    //Agrega o quita una clase dependiendo el turno del jugador para que el casillero muestre el color del jugador al pasar el puntero por arriba
+    //Add or removes a class depending on the player's turn for the space to show the color of the player to play
     if (turn === true) {
         document.getElementById(id).classList.toggle("turn2", false);
         document.getElementById(id).classList.toggle("turn1", true);
@@ -48,13 +68,13 @@ function hover(id) {
 }
 
 function disableDiv(id) {
-    //quita la función onclick de los casilleros ya ocupados
+    //Removes the onClick function from the full spaces
     var element = document.getElementById(id);
     element.onclick = null;
 }
 
 function restart() {
-    //vacía tablero lógico
+    //clean logical board
     array = [
         ["v", "v", "v"],
         ["v", "v", "v"],
@@ -64,30 +84,50 @@ function restart() {
     //Go around all the positions
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
-            //Limpia la imágen
+            //Cleans the img
             document.getElementById(i + "" + j + "img").toggleAttribute("src");
             var div = document.getElementById(i + "" + j);
             div.className = 'turn1';
-            //vuelve a otorgar función onclick
+            //Puts back the onClick function
             div.onclick = function () {
                 move(i + "" + j);
             }
         }
 
     }
-    //reinicia movimientos
+    //restart moves
     moves = 0;
     document.getElementById('winDiv').className = "dissapear";
+}
+
+function loadVisualBoardFromStorage(array) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (array[i][j] === "x") {
+                document.getElementById(i.toString() + j.toString() + "img").setAttribute("src", "assets/img/cross.svg");
+                //Change color tu blue
+                document.getElementById(i.toString() + j.toString()).classList.add("blue");
+            } else {
+                if (array[i][j] === "o") {
+                    document.getElementById(i.toString() + j.toString() + "img").setAttribute("src", "assets/img/circle.svg");
+                    //Change color to red
+                    document.getElementById(i.toString() + j.toString()).classList.add("red");
+                }
+            }
+
+        }
+
+    }
 }
 
 function loadVisualBoard(id) {
     if (array[id[0]][id[1]] === "x") {
         document.getElementById(id + "img").setAttribute("src", "assets/img/cross.svg");
-        //Cambió color a azul
+        //Change color tu blue
         document.getElementById(id).classList.add("blue");
     } else {
         document.getElementById(id + "img").setAttribute("src", "assets/img/circle.svg");
-        //Cambió color a rojo
+        //Change color to red
         document.getElementById(id).classList.add("red");
     }
 }
@@ -174,16 +214,17 @@ function checkWin() {
         array[0][2] === check && array[1][2] === check && array[2][2] === check ||
         array[0][0] === check && array[1][1] === check && array[2][2] === check ||
         array[2][0] === check && array[1][1] === check && array[0][2] === check) {
-        //GANÓ
+
+        //WIN
         if (check === "x") {
             playerX++;
             document.getElementById("gamesX").innerText = playerX;
         } else {
-            player++;
+            playerO++;
             document.getElementById("gamesO").innerText = playerO;
         }
-        win(check); //muestra mensaje
-    } else if (moves === 9) { //Empate
+        win(check); //Shows message
+    } else if (moves === 9) { //Tie
         document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="restart()">Empezar nueva partida</span>';
         document.getElementById('winDiv').className = "appear";
     }
@@ -210,9 +251,3 @@ function totalRestart() {
     myStorage.clear();
     restart();
 }
-
-// functions to save data with localStorage;
-
-/*document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1> <iframe src="https://giphy.com/embed/xThtajsa65bqiQP32g" width="480" height="391" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="reiniciar()">Empezar nueva partida</span>'EMPATE CON EL GIF*/
-
-/*</h1><iframe src="https://giphy.com/embed/hXDrTueJWAscK3xWQ2" width="480" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><span onclick="reiniciar()">Empezar nueva partida</span>';GANA JUGADOR*/
