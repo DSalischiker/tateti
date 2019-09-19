@@ -215,11 +215,11 @@ function totalRestart() {
 function saveData () {
 
     savedTurn = localStorage.setItem (turn);
-    savedMoves = localStorage.setItem ();
-    savedCheck = localStorage.setItem ();
-    savedX = localStorage.setItem ();
-    savedO = localStorage.setItem ();
-    savedArray = localStorage.setItem ();
+    savedMoves = localStorage.setItem (moves);
+    savedCheck = localStorage.setItem (check);
+    savedX = localStorage.setItem (playerX);
+    savedO = localStorage.setItem (playerO);
+    savedArray = localStorage.setItem (array);
 
 }
 
