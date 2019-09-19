@@ -220,6 +220,5 @@ function saveData () {
     savedX = localStorage.setItem (playerX);
     savedO = localStorage.setItem (playerO);
     savedArray = localStorage.setItem (array);
-
 }
 
