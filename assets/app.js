@@ -18,12 +18,16 @@ if (typeof myStorage !== 'undefined') {
         console.log("turn: " + turn);
         moves = JSON.parse(myStorage.getItem('Moves'));
         console.log("moves: " + moves);
-        gamesX = JSON.parse(myStorage.getItem('GamesX'));
-        console.log("gamesX: " + gamesX);
-        gamesO = JSON.parse(myStorage.getItem('GamesO'));
-        console.log("gamesO: " + gamesO);
+        playerX = JSON.parse(myStorage.getItem('GamesX'));
+        console.log("gamesX: " + playerX);
+        playerO = JSON.parse(myStorage.getItem('GamesO'));
+        console.log("gamesO: " + playerO);
         array = JSON.parse(myStorage.getItem('Board'));
         console.log("array: " + array);
+        //Update visual board according to logical board from localStorage
+        loadVisualBoardFromStorage(array);
+        document.getElementById("gamesX").innerText = playerX;
+        document.getElementById("gamesO").innerText = playerO;
     }
 } else {
     // localStorage not defined
@@ -101,6 +105,26 @@ function restart() {
     //restart moves
     moves = 0;
     document.getElementById('winDiv').className = "dissapear";
+}
+
+function loadVisualBoardFromStorage(array) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (array[i][j] === "x") {
+                document.getElementById(i.toString() + j.toString() + "img").setAttribute("src", "assets/img/cross.svg");
+                //Change color tu blue
+                document.getElementById(i.toString() + j.toString()).classList.add("blue");
+            } else {
+                if (array[i][j] === "o") {
+                    document.getElementById(i.toString() + j.toString() + "img").setAttribute("src", "assets/img/circle.svg");
+                    //Change color to red
+                    document.getElementById(i.toString() + j.toString()).classList.add("red");
+                }
+            }
+
+        }
+
+    }
 }
 
 function loadVisualBoard(id) {
