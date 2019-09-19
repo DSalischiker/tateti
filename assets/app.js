@@ -178,7 +178,7 @@ function checkWin() {
             playerX++;
             document.getElementById("gamesX").innerText = playerX;
         } else {
-            playerO++;
+            player++;
             document.getElementById("gamesO").innerText = playerO;
         }
         win(check); //Shows message
@@ -209,7 +209,6 @@ function totalRestart() {
 
     restart();
 }
-
 
 
 /*document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1> <iframe src="https://giphy.com/embed/xThtajsa65bqiQP32g" width="480" height="391" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="reiniciar()">Empezar nueva partida</span>'EMPATE CON EL GIF*/
