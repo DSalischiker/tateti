@@ -203,9 +203,4 @@ function totalRestart() {
     restart();
 }
 
-var turnsSave  = localStorage.getItem('turns');
-var moveSave = localStorage.getItem('moves');
-var check = localStorage.getItem('check');
-var playerX = localStorage.getItem('');
-
 
