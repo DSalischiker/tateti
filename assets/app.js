@@ -32,15 +32,7 @@ if (typeof myStorage !== 'undefined') {
 } else {
     // localStorage not defined
 }
-/* if (myStorage.getItem('Turn') === null) {
-    //LocalStorage is empty
-} else {
-    turn = JSON.parse(myStorage.GetItem('Turn'));
-    moves = JSON.parse(myStorage.GetItem('Moves'));
-    gamesX = JSON.parse(myStorage.GetItem('GamesX'));
-    gamesO = JSON.parse(myStorage.GetItem('GamesO'));
-    array = JSON.parse(myStorage.GetItem('Board'));
-} */
+
 //FUNCTION FOR A GAME MOVE
 function move(id) {
     moves += 1;
@@ -258,8 +250,3 @@ function totalRestart() {
     myStorage.clear();
     restart();
 }
-
-
-/*document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1> <iframe src="https://giphy.com/embed/xThtajsa65bqiQP32g" width="480" height="391" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="reiniciar()">Empezar nueva partida</span>'EMPATE CON EL GIF*/
-
-/*</h1><iframe src="https://giphy.com/embed/hXDrTueJWAscK3xWQ2" width="480" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><span onclick="reiniciar()">Empezar nueva partida</span>';GANA JUGADOR*/
