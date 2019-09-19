@@ -104,46 +104,41 @@ div img {
 }
 
 #winDiv {
-    top: 9%;
-    width: 50%;
-    height: auto;
+    top: 7%;
+    width: 44%;
+    height: 557px;
     padding-bottom: 2em;
-    background-color: rgb(79, 21, 146);
+    background-color: rgb(79, 21, 146,0.8);
     border-radius: 1em;
     color: white;
     position: absolute;
-    left: 25%;
-
+    left: 28%;
+    -webkit-animation: fadein 2s;
 }
 
-#winDiv h1 {
-    margin-top: 1em;
-    font-size: 2em;
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
-#winDiv p {
-    width: fit-content;
-    margin: 0 auto;
-    display: flex;
-    justify-self: center;
-    margin-bottom: 2em;
+#winDiv h1{
+        font-size: 3em;
+        position: absolute;
+        top: 26%;
+}
+#winDiv p{
+    padding: 19%;
+    text-align: center;
 }
 
-#winDiv iframe {
-    width: 100%;
-    padding-bottom: 4%;
-}
-
-#winDiv span {
-    width: fit-content;
-    margin: 0 auto;
-    display: flex;
-    justify-self: center;
+#winDiv span{
     background-color: white;
     color: rgb(79, 21, 146);
     border-radius: 1em;
-    padding: 1em;
+    padding: 2em;
     cursor: pointer;
+    position: absolute;
+    bottom: 17%;
 }
 
 #winDiv span:hover {
@@ -159,7 +154,9 @@ div img {
 
 .aparecer {
 
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {

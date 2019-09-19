@@ -176,14 +176,14 @@ function chequearGano() {
         }
         win(chequeo); //muestra mensaje
     } else if (movimientos === 9) { //Empate
-        document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1> <iframe src="https://giphy.com/embed/xThtajsa65bqiQP32g" width="480" height="391" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="reiniciar()">Empezar nueva partida</span>'
+        document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="reiniciar()">Empezar nueva partida</span>';
         document.getElementById('winDiv').className = "aparecer";
     }
 }
 
 function win(chequeo) {
     if (chequeo == "x" || chequeo == "o") {
-        document.getElementById('winDiv').innerHTML = '<h1>¡Ganó el jugador ' + chequeo + '!</h1><iframe src="https://giphy.com/embed/hXDrTueJWAscK3xWQ2" width="480" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><span onclick="reiniciar()">Empezar nueva partida</span>';
+        document.getElementById('winDiv').innerHTML = '<h1>¡Ganó el jugador ' + chequeo + '!</h1><span onclick="reiniciar()">Empezar nueva partida</span>';
         document.getElementById('winDiv').className = "aparecer";
     }
 }
@@ -202,3 +202,9 @@ function reinicioTotal() {
 
     reiniciar ();
 }
+
+
+
+/*document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1> <iframe src="https://giphy.com/embed/xThtajsa65bqiQP32g" width="480" height="391" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="reiniciar()">Empezar nueva partida</span>'EMPATE CON EL GIF*/
+
+/*</h1><iframe src="https://giphy.com/embed/hXDrTueJWAscK3xWQ2" width="480" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><span onclick="reiniciar()">Empezar nueva partida</span>';GANA JUGADOR*/
