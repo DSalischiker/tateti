@@ -88,6 +88,7 @@ function restart() {
         ["v", "v", "v"],
         ["v", "v", "v"],
     ];
+    myStorage.setItem('Board', JSON.stringify(array));
     //Go around all the positions
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
@@ -254,7 +255,7 @@ function totalRestart() {
 
     document.getElementById("gamesX").innerText = playerX;
     document.getElementById("gamesO").innerText = playerO;
-
+    myStorage.clear();
     restart();
 }
 
