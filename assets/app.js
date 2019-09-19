@@ -9,7 +9,34 @@ var array = [ //bidimensional matrix
     ["v", "v", "v"],
     ["v", "v", "v"],
 ];
+myStorage = window.localStorage;
+if (typeof myStorage !== 'undefined') {
+    if (myStorage.getItem('Turn') === null) {
 
+    } else {
+        turn = JSON.parse(myStorage.getItem('Turn'));
+        console.log("turn: " + turn);
+        moves = JSON.parse(myStorage.getItem('Moves'));
+        console.log("moves: " + moves);
+        gamesX = JSON.parse(myStorage.getItem('GamesX'));
+        console.log("gamesX: " + gamesX);
+        gamesO = JSON.parse(myStorage.getItem('GamesO'));
+        console.log("gamesO: " + gamesO);
+        array = JSON.parse(myStorage.getItem('Board'));
+        console.log("array: " + array);
+    }
+} else {
+    // localStorage not defined
+}
+/* if (myStorage.getItem('Turn') === null) {
+    //LocalStorage is empty
+} else {
+    turn = JSON.parse(myStorage.GetItem('Turn'));
+    moves = JSON.parse(myStorage.GetItem('Moves'));
+    gamesX = JSON.parse(myStorage.GetItem('GamesX'));
+    gamesO = JSON.parse(myStorage.GetItem('GamesO'));
+    array = JSON.parse(myStorage.GetItem('Board'));
+} */
 //FUNCTION FOR A GAME MOVE
 function move(id) {
     moves += 1;
@@ -26,7 +53,11 @@ function move(id) {
         //Disable the space clicked
         disableDiv(id);
     }
-
+    myStorage.setItem('Turn', JSON.stringify(turn));
+    myStorage.setItem('Moves', JSON.stringify(moves));
+    myStorage.setItem('GamesX', JSON.stringify(playerX));
+    myStorage.setItem('GamesO', JSON.stringify(playerO));
+    myStorage.setItem('Board', JSON.stringify(array));
 }
 
 function hover(id) {
@@ -171,7 +202,7 @@ function checkWin() {
             playerX++;
             document.getElementById("gamesX").innerText = playerX;
         } else {
-            player++;
+            playerO++;
             document.getElementById("gamesO").innerText = playerO;
         }
         win(check); //Shows message
