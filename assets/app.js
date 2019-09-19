@@ -9,6 +9,13 @@ var array = [ //matriz bidimensional
     ["v", "v", "v"],
     ["v", "v", "v"],
 ];
+// VARs for localStorage;
+let savedTurn;
+let savedMoves;
+let savedCheck;
+let savedX;
+let savedO;
+let savedArray;
 
 //FUNCIÓN CUANDO SE HACE UN MOVIMIENTO
 function move(id) {
@@ -203,4 +210,16 @@ function totalRestart() {
     restart();
 }
 
+// functions to save data with localStorage;
+
+function saveData () {
+
+    savedTurn = localStorage.setItem (turn);
+    savedMoves = localStorage.setItem (moves);
+    savedCheck = localStorage.setItem (check);
+    savedX = localStorage.setItem (playerX);
+    savedO = localStorage.setItem (playerO);
+    savedArray = localStorage.setItem (array);
+
+}
 
