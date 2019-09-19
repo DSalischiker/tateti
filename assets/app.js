@@ -214,6 +214,7 @@ function checkWin() {
         array[0][2] === check && array[1][2] === check && array[2][2] === check ||
         array[0][0] === check && array[1][1] === check && array[2][2] === check ||
         array[2][0] === check && array[1][1] === check && array[0][2] === check) {
+
         //WIN
         if (check === "x") {
             playerX++;
