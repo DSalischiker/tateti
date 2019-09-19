@@ -226,7 +226,7 @@ function checkWin() {
             playerX++;
             document.getElementById("gamesX").innerText = playerX;
         } else {
-            player++;
+            playerO++;
             document.getElementById("gamesO").innerText = playerO;
         }
         win(check); //Shows message
