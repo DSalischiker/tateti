@@ -9,31 +9,15 @@ var array = [ //matriz bidimensional
     ["v", "v", "v"],
     ["v", "v", "v"],
 ];
-myStorage = window.localStorage;
-if (typeof myStorage !== 'undefined') {
-    if (myStorage.getItem('Turn') === null) {
+// VARs for localStorage;
+let savedTurn;
+let savedMoves;
+let savedCheck;
+let savedX;
+let savedO;
+let savedArray;
 
-    } else {
-        turn = JSON.parse(myStorage.getItem('Turn'));
-        console.log("turn: " + turn);
-        moves = JSON.parse(myStorage.getItem('Moves'));
-        console.log("moves: " + moves);
-        playerX = JSON.parse(myStorage.getItem('GamesX'));
-        console.log("gamesX: " + playerX);
-        playerO = JSON.parse(myStorage.getItem('GamesO'));
-        console.log("gamesO: " + playerO);
-        array = JSON.parse(myStorage.getItem('Board'));
-        console.log("array: " + array);
-        //Update visual board according to logical board from localStorage
-        loadVisualBoardFromStorage(array);
-        document.getElementById("gamesX").innerText = playerX;
-        document.getElementById("gamesO").innerText = playerO;
-    }
-} else {
-    // localStorage not defined
-}
-
-//FUNCTION FOR A GAME MOVE
+//FUNCIÓN CUANDO SE HACE UN MOVIMIENTO
 function move(id) {
     moves += 1;
     //Si el casillero clickeado está vacío
@@ -226,3 +210,5 @@ function totalRestart() {
     myStorage.clear();
     restart();
 }
+
+// functions to save data with localStorage;
