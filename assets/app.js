@@ -9,14 +9,38 @@ var array = [ //bidimensional matrix
     ["v", "v", "v"],
     ["v", "v", "v"],
 ];
-// VARs for localStorage;
-let savedTurn;
-let savedMoves;
-let savedCheck;
-let savedX;
-let savedO;
-let savedArray;
+myStorage = window.localStorage;
+if (typeof myStorage !== 'undefined') {
+    if (myStorage.getItem('Turn') === null) {
 
+    } else {
+        turn = JSON.parse(myStorage.getItem('Turn'));
+        console.log("turn: " + turn);
+        moves = JSON.parse(myStorage.getItem('Moves'));
+        console.log("moves: " + moves);
+        playerX = JSON.parse(myStorage.getItem('GamesX'));
+        console.log("gamesX: " + playerX);
+        playerO = JSON.parse(myStorage.getItem('GamesO'));
+        console.log("gamesO: " + playerO);
+        array = JSON.parse(myStorage.getItem('Board'));
+        console.log("array: " + array);
+        //Update visual board according to logical board from localStorage
+        loadVisualBoardFromStorage(array);
+        document.getElementById("gamesX").innerText = playerX;
+        document.getElementById("gamesO").innerText = playerO;
+    }
+} else {
+    // localStorage not defined
+}
+/* if (myStorage.getItem('Turn') === null) {
+    //LocalStorage is empty
+} else {
+    turn = JSON.parse(myStorage.GetItem('Turn'));
+    moves = JSON.parse(myStorage.GetItem('Moves'));
+    gamesX = JSON.parse(myStorage.GetItem('GamesX'));
+    gamesO = JSON.parse(myStorage.GetItem('GamesO'));
+    array = JSON.parse(myStorage.GetItem('Board'));
+} */
 //FUNCTION FOR A GAME MOVE
 function move(id) {
     moves += 1;
@@ -33,7 +57,11 @@ function move(id) {
         //Disable the space clicked
         disableDiv(id);
     }
-
+    myStorage.setItem('Turn', JSON.stringify(turn));
+    myStorage.setItem('Moves', JSON.stringify(moves));
+    myStorage.setItem('GamesX', JSON.stringify(playerX));
+    myStorage.setItem('GamesO', JSON.stringify(playerO));
+    myStorage.setItem('Board', JSON.stringify(array));
 }
 
 function hover(id) {
@@ -77,6 +105,26 @@ function restart() {
     //restart moves
     moves = 0;
     document.getElementById('winDiv').className = "dissapear";
+}
+
+function loadVisualBoardFromStorage(array) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (array[i][j] === "x") {
+                document.getElementById(i.toString() + j.toString() + "img").setAttribute("src", "assets/img/cross.svg");
+                //Change color tu blue
+                document.getElementById(i.toString() + j.toString()).classList.add("blue");
+            } else {
+                if (array[i][j] === "o") {
+                    document.getElementById(i.toString() + j.toString() + "img").setAttribute("src", "assets/img/circle.svg");
+                    //Change color to red
+                    document.getElementById(i.toString() + j.toString()).classList.add("red");
+                }
+            }
+
+        }
+
+    }
 }
 
 function loadVisualBoard(id) {
