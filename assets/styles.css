@@ -68,12 +68,12 @@ h1 {
 
 
 #board div.turn1:hover {
-    background-color: rgb(52, 138, 219);
+    background-color: rgb(93, 166, 235);
     transition: all 0.5s ease-out;
 }
 
 #board div.turn2:hover {
-    background-color: rgb(233, 64, 64);
+    background-color: rgb(235, 93, 93);
     transition: all 0.5s ease-out;
 }
 
@@ -95,6 +95,10 @@ h1 {
 #board div.red:hover {
     background-color: #BD1D1E;
     cursor: not-allowed;
+}
+
+#board div.win {
+    background-color: rgb(221, 208, 32);
 }
 
 div img {
