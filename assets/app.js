@@ -80,6 +80,7 @@ function restart() {
         ["v", "v", "v"],
         ["v", "v", "v"],
     ];
+    initialState();
     myStorage.setItem('Board', JSON.stringify(array));
     //Go around all the positions
     for (let i = 0; i < 3; i++) {
@@ -274,6 +275,7 @@ function checkWin() {
     } else if (moves === 9) { //Tie
         document.getElementById('winDiv').innerHTML = '<h1>¡Empate!</h1><p>Felicitaciones X y O. Estuvo muy parejo. ¿Van por el desempate?</p><span onclick="restart()">Empezar nueva partida</span>';
         document.getElementById('winDiv').className = "appear";
+        blockButtons();
     }
 }
 
@@ -281,6 +283,7 @@ function win(check) {
     if (check == "x" || check == "o") {
         document.getElementById('winDiv').innerHTML = '<h1>¡Ganó el jugador ' + check.toUpperCase() + '!</h1><span onclick="restart()">Empezar nueva partida</span>';
         document.getElementById('winDiv').className = "appear";
+        blockButtons();
     }
 }
 
@@ -297,4 +300,14 @@ function totalRestart() {
     document.getElementById("gamesO").innerText = playerO;
     myStorage.clear();
     restart();
+}
+
+function blockButtons(){
+        document.getElementById('restart').style.pointerEvents = 'none';
+        document.getElementById('totalRestart').style.pointerEvents = 'none';
+}
+
+function initialState(){
+    document.getElementById('restart').style.pointerEvents = 'auto';
+    document.getElementById('totalRestart').style.pointerEvents = 'auto';
 }
